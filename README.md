@@ -1,6 +1,6 @@
 # material-reach
 
-> 短视频素材搜集能力层 —— `grab` / `codec-fix` / `index` / `doctor`，
+> 短视频素材搜集能力层 —— `grab` / `douyin` / `codec-fix` / `index` / `doctor`，
 > 一条命令把素材**真正落盘**：视频、封面、元数据、索引，拒绝「只有链接」。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -42,11 +42,16 @@ mr grab "https://www.youtube.com/watch?v=xxxx" --out 素材库/我的选题
 mr grab "https://www.bilibili.com/video/BVxxxx" --out 素材库/我的选题   # 元数据落盘
 mr grab "https://some.blog/post"               --out 素材库/我的选题   # 标题+封面
 
-# 3. 编码体检（治「只有声音没画面」）
+# 3. 抖音采集（游客态，无需登录；需 pip install ".[douyin]" 装 selenium）
+mr douyin "https://www.douyin.com/video/xxxx" --out 素材库/抖音素材     # 单视频（长/短链均可）
+mr douyin "https://www.douyin.com/user/MS4wLjABAAAAxxxx" --max 30      # 博主批量
+mr douyin "https://www.douyin.com/search/美食" --max 10                 # 搜索页批量
+
+# 4. 编码体检（治「只有声音没画面」）
 mr codec-fix 素材库/ --check     # 列出 AV1/VP9 待修复
 mr codec-fix 素材库/             # 转码 H.264，原文件自动备份
 
-# 4. 盘点交付
+# 5. 盘点交付
 mr index 素材库/                 # 产出 INDEX.jsonl + INDEX.md
 ```
 
@@ -56,6 +61,7 @@ mr index 素材库/                 # 产出 INDEX.jsonl + INDEX.md
 |---|---|---|
 | `mr doctor` | 素材链路体检 | 真执行上游命令探测（非 which 纸面检查），处方式修复提示 |
 | `mr grab` | 按 URL 渠道抓取落盘 | YouTube 格式候选链（`136+140-19 → mp4 合轨 → 18`）避开 m3u8 碎片流；串行纪律防 403；落盘即 ffprobe 验证 |
+| `mr douyin` | 抖音采集（游客态） | 页面上下文调 web `aweme/detail` 接口拿直链；douyinvod 防盗链靠 `Referer` 头解决；禁 headless（风控），有头窗口放屏幕外；分片重试防断流 |
 | `mr codec-fix` | AV1/VP9 → H.264 | 治 YouTube 高清档 AV1 黑屏；原文件自动备份不覆盖 |
 | `mr index` | 素材库盘点 | INDEX.jsonl（机器可读，喂给 Agent）+ INDEX.md（人话表格） |
 

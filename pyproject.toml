@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "material-reach"
+version = "0.1.0"
+description = "短视频素材搜集能力层 —— grab / codec-fix / index / doctor，一条命令把素材真正落盘。给 Agent 与创作者用的开源 CLI。"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "TaurenRen" }]
+keywords = ["material", "video", "yt-dlp", "ffmpeg", "agent-skill", "short-video"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Multimedia :: Video",
+]
+dependencies = ["yt-dlp>=2024.12.13"]
+
+[project.optional-dependencies]
+bili = ["bilibili-cli"]
+
+[project.scripts]
+mr = "material_reach.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["material_reach*"]

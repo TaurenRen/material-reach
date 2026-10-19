@@ -101,6 +101,18 @@ Agent 即可在大白话需求（"帮我搜集 X 的素材"）触发时正确调
 - [ ] B 站字幕读取（bili-cli AI 字幕接口）
 - [ ] 小宇宙播客 m4a 直链提取 + 转写
 
+## 找到作者
+
+实测踩坑记录、AI 工作流技巧都在公众号「**狒狒AI**」；开箱即用的资料包在小程序「**狒狒AI资料库**」。
+
+<p align="center">
+  <img src="docs/qr-gzh.jpg" width="200" alt="公众号「狒狒AI」" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="docs/qr-mini.jpg" width="200" alt="小程序「狒狒AI资料库」" />
+</p>
+
+<p align="center"><b>公众号「狒狒AI」</b>（实测踩坑 + 工作流）&nbsp;&nbsp;·&nbsp;&nbsp;<b>小程序「狒狒AI资料库」</b>（资料包领取）</p>
+
 ## License
 
 MIT
